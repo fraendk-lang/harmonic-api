@@ -11,6 +11,10 @@ logger = logging.getLogger("harmonic-pro")
 
 app = FastAPI(title="Harmonic Pro DJ API")
 
+@app.get("/health")
+def health():
+    return {"status": "ok", "service": "harmonic-pro"}
+
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "*").split(",")
 
 app.add_middleware(
